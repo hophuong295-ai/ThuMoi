@@ -7,35 +7,35 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,600&display=swap');
 
-        body { margin: 0; padding: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; overflow: hidden; font-family: 'Montserrat', sans-serif; }
+        body { margin: 0; padding: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #fff5f7; overflow: hidden; font-family: 'Montserrat', sans-serif; }
 
-        /* Nền lấp lánh nhẹ nhàng */
-        #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #2d132c 0%, #000000 100%); z-index: -1; }
+        /* Nền hồng pastel pha trắng trong trẻo */
+        #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ffffff 0%, #ffe4e1 100%); z-index: -1; }
 
-        .card { background: rgba(255, 192, 203, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 50px 30px; border-radius: 30px; text-align: center; color: #fff; width: 85%; max-width: 500px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: fadeIn 2s ease-out; position: relative; }
+        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 500px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0; background: linear-gradient(to right, #ffafbd, #ffc3a0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 10px rgba(255,175,189,0.5)); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0; background: linear-gradient(to right, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px rgba(255,175,189,0.3)); }
 
         .sub-title { letter-spacing: 4px; font-size: 0.8em; text-transform: uppercase; color: #ffafbd; margin-bottom: 30px; font-weight: 300; }
 
-        .content { line-height: 1.8; font-size: 0.95em; color: rgba(255,255,255,0.8); }
+        .content { line-height: 1.8; font-size: 0.95em; color: #777; }
 
-        .highlight-box { margin: 25px 0; padding: 20px; border: 1px solid rgba(255,175,189,0.3); border-radius: 15px; background: rgba(255,175,189,0.05); }
+        .highlight-box { margin: 25px 0; padding: 20px; border: 1px solid rgba(255,175,189,0.4); border-radius: 15px; background: rgba(255,255,255,0.5); }
 
-        .time { font-size: 1.4em; color: #ffafbd; font-weight: 600; display: block; }
+        .time { font-size: 1.4em; color: #ff8fa3; font-weight: 600; display: block; }
         
-        .map-btn { text-decoration: none; color: #000; background: #ffafbd; padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 10px 20px rgba(255,175,189,0.3); }
-        .map-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,175,189,0.5); background: #fff; }
+        .map-btn { text-decoration: none; color: #fff; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); }
+        .map-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255,175,189,0.5); background: #fff; color: #ffafbd; border: 1px solid #ffafbd; }
 
-        /* Hiệu ứng hạt sáng bay (Sparkles) */
+        /* Hạt sáng lấp lánh màu trắng hồng */
         .sparkle { position: absolute; background: #fff; border-radius: 50%; pointer-events: none; opacity: 0; animation: sparkleAnim 3s linear infinite; }
         @keyframes sparkleAnim { 0% { transform: translateY(0) scale(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
 
-        /* Cánh hoa rơi nhẹ nhàng */
+        /* Cánh hoa rơi */
         .petal { position: absolute; color: #ffafbd; pointer-events: none; animation: fall linear infinite; }
-@keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -58,11 +58,10 @@
             <p>Rất mong sự hiện diện của bạn để ngày vui của Phương thêm ý nghĩa. ✨</p>
         </div>
 
-        <a href="https://maps.google.com" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
+        <a href="https://www.google.com/maps" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
     </div>
 
     <script>
-        // Tạo hạt lấp lánh (Sparkles)
         function createSparkles() {
             for(let i=0; i<30; i++) {
                 let s = document.createElement('div');
@@ -76,7 +75,6 @@
             }
         }
 
-        // Tạo cánh hoa rơi (Petals)
         function createPetals() {
             const icons = ['🌸', '✨', '🤍'];
             for(let i=0; i<20; i++) {
@@ -96,7 +94,6 @@
             createPetals();
         };
 
-        // Click để bắn thêm hiệu ứng ánh sáng
         document.addEventListener('click', (e) => {
             if (e.target.tagName !== 'A') {
                 for(let i=0; i<10; i++) {
@@ -104,10 +101,10 @@
                     p.style.position = 'fixed';
                     p.style.width = '4px';
                     p.style.height = '4px';
-                    p.style.background = '#ffafbd';
+                    p.style.background = '#ffc3a0';
                     p.style.borderRadius = '50%';
                     p.style.left = e.clientX + 'px';
-p.style.top = e.clientY + 'px';
+                    p.style.top = e.clientY + 'px';
                     p.style.boxShadow = '0 0 10px #ffafbd';
                     p.style.pointerEvents = 'none';
                     document.body.appendChild(p);
