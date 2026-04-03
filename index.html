@@ -3,18 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Bae</title>
+    <title>Invitation - Hồ Trúc Phương</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@1,600&display=swap');
-        body { margin: 0; padding: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #fff5f7; font-family: 'Montserrat', sans-serif; overflow: hidden; }
+
+        body { margin: 0; padding: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #fff5f7; overflow: hidden; font-family: 'Montserrat', sans-serif; }
+
         #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ffffff 0%, #ffe4e1 100%); z-index: -1; }
-        .card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 40px 20px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 350px; box-shadow: 0 10px 30px rgba(255,175,189,0.2); position: relative; z-index: 10; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.2em; margin: 10px 0; background: linear-gradient(to right, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .sub-title { letter-spacing: 3px; font-size: 0.75em; text-transform: uppercase; color: #ffafbd; margin-bottom: 20px; font-weight: 600; }
-        .highlight-box { margin: 20px 0; padding: 15px; border: 1px solid rgba(255, 175, 189, 0.4); border-radius: 15px; background: rgba(255, 255, 255, 0.6); }
-        .time { font-size: 1.2em; color: #ff8fa3; font-weight: 600; display: block; }
-        .map-btn { text-decoration: none; color: #fff !important; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 25px; border-radius: 50px; display: inline-block; margin-top: 15px; font-weight: 600; font-size: 0.85em; position: relative; z-index: 20; box-shadow: 0 5px 15px rgba(255,175,189,0.4); }
+
+        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 380px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; z-index: 10; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0; background: linear-gradient(to right, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .sub-title { letter-spacing: 4px; font-size: 0.8em; text-transform: uppercase; color: #ffafbd; margin-bottom: 30px; font-weight: 600; }
+
+        .content { line-height: 1.8; font-size: 0.95em; color: #777; }
+
+        .highlight-box { margin: 25px 0; padding: 20px; border: 1px solid rgba(255, 175, 189, 0.4); border-radius: 15px; background: rgba(255, 255, 255, 0.5); }
+
+        .time { font-size: 1.4em; color: #ff8fa3; font-weight: 600; display: block; }
+        
+        .map-btn { text-decoration: none; color: #fff !important; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); position: relative; z-index: 20; }
+
+        /* Hoa rơi nổi lên trên nhưng cho phép click xuyên qua */
         .petal { position: fixed; top: -50px; pointer-events: none; z-index: 9999 !important; animation: fall linear infinite; }
+        
         @keyframes fall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
@@ -23,35 +38,44 @@
     </style>
 </head>
 <body>
+
     <div id="bg"></div>
+
     <div class="card">
         <div class="sub-title">THƯ MỜI TỐT NGHIỆP</div>
         <h1>Hồ Trúc Phương</h1>
-        <div style="line-height: 1.6; font-size: 0.9em; color: #777;">
+        
+        <div class="content">
             <p>Thân chào bae dấu yêu !!!</p>
-            <p>Mời tình yêu đến chung vui lễ tốt nghiệp cùng mình nha:</p>
+            <p>Để buổi gặp gỡ thêm thong thả và trọn vẹn, mình trân trọng mời tình yêu đến chung vui buổi lễ tốt nghiệp cùng mình vào khung giờ buổi chiều:</p>
+            
             <div class="highlight-box">
                 <span class="time">16g • 06.04.2026</span>
-                <strong>Tại Sterik Café</strong>
-                <br><small>11/9 Thoại Ngọc Hầu, Tân Phú</small>
+                <span>Tại Sterik Café</span>
+                <br><small>11/9 Thoại Ngọc Hầu, Phú Trung, Tân Phú</small>
             </div>
-            <p>Rất mong sự hiện diện của <b>Babyyy</b> <br> iu iu <333 ✨</p>
+
+            <p>Rất mong sự hiện diện của <b>Babyyy</b> để ngày vui của mình thêm ý nghĩa. <br> iu iu iu iu <33333 ✨</p>
         </div>
-        <a href="https://maps.app.goo.gl/ChFhX9vC7q5F5n43A" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
+
+        <a href="https://www.google.com/maps/search/?api=1&query=Sterik+Café+11/9+Thoại+Ngọc+Hầu" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
     </div>
 
     <script>
-        const icons = ['🌸', '✨', '🤍'];
-        for (let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'petal';
-            p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            p.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            p.style.animationDelay = (Math.random() * 5) + 's';
-            document.body.appendChild(p);
+        const icons = ['🌸', '✨', '🤍', '🌸', '✨'];
+        function createPetals() {
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'petal';
+                p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                p.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                p.style.animationDelay = (Math.random() * 5) + 's';
+                document.body.appendChild(p);
+            }
         }
+        createPetals();
     </script>
 </body>
 </html>
