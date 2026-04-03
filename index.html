@@ -27,23 +27,15 @@
         
         .map-btn { text-decoration: none; color: #fff; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); position: relative; z-index: 20; }
 
-        /* ĐÂY NÈ: Hoa nổi lên lớp cao nhất nhưng cho phép chạm xuyên qua */
-        .petal, .sparkle { 
-            position: fixed; 
-            pointer-events: none; 
-            z-index: 9999 !important; 
-        }
+        /* Hoa và sao nổi lên lớp cao nhất */
+        .petal, .sparkle { position: fixed; pointer-events: none; z-index: 9999 !important; }
         
         @keyframes fallAndSway {
             0% { transform: translate(0, -10vh) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
             100% { transform: translate(100px, 110vh) rotate(360deg); opacity: 0; }
         }
-        @keyframes sparkleAnim { 
-            0% { transform: scale(0); opacity: 0; } 
-            50% { opacity: 1; } 
-            100% { transform: scale(1.2); opacity: 0; } 
-        }
+        @keyframes sparkleAnim { 0% { transform: scale(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -72,21 +64,20 @@
 
     <script>
         function createElements() {
-            const icons = ['🌸', '✨', '🤍', '🌸'];
+            const flowers = ['🌸', '✨', '🤍', '🌸'];
             for(let i=0; i<35; i++) {
                 let p = document.createElement('div');
-                let isSparkle = Math.random() > 0.5;
-                p.className = isSparkle ? 'sparkle' : 'petal';
-                p.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-                
+                p.className = Math.random() > 0.5 ? 'petal' : 'sparkle';
+                p.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
                 p.style.left = Math.random() * 100 + 'vw';
-                p.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                p.style.top = (Math.random() * -20) + 'vh';
+                p.style.fontSize = (Math.random() * 15 + 15) + 'px';
                 
-                if(!isSparkle) {
-                    p.style.animation = `fallAndSway ${Math.random() * 5 + 6}s linear infinite`;
+                if(p.className === 'petal') {
+                    p.style.animation = `fallAndSway ${Math.random() * 5 + 5}s linear infinite`;
                 } else {
-                    p.style.top = Math.random() * 100 + 'vh';
                     p.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s ease-in-out infinite`;
+                    p.style.top = Math.random() * 100 + 'vh';
                 }
                 p.style.animationDelay = (Math.random() * 5) + 's';
                 document.body.appendChild(p);
