@@ -11,11 +11,11 @@
 
         #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ffffff 0%, #ffe4e1 100%); z-index: -1; }
 
-        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 500px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; }
+        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 380px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0; background: linear-gradient(to right, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px rgba(255,175,189,0.3)); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8em; margin: 0; background: linear-gradient(to right, #ff9a9e, #fecfef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .sub-title { letter-spacing: 4px; font-size: 0.8em; text-transform: uppercase; color: #ffafbd; margin-bottom: 30px; font-weight: 300; }
 
@@ -28,10 +28,13 @@
         .map-btn { text-decoration: none; color: #fff; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); }
         .map-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255,175,189,0.5); background: #fff; color: #ffafbd; border: 1px solid #ffafbd; }
 
+        /* Hạt sáng (Sparkles) - bling bling */
         .sparkle { position: absolute; background: #fff; border-radius: 50%; pointer-events: none; opacity: 0; animation: sparkleAnim 3s linear infinite; }
         @keyframes sparkleAnim { 0% { transform: translateY(0) scale(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
-        .petal { position: absolute; color: #ffafbd; pointer-events: none; animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.6; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+
+        /* Cánh hoa (Petals) - rơi nhẹ nhàng, xoay tròn */
+        .petal { position: absolute; background-size: contain; background-repeat: no-repeat; pointer-events: none; opacity: 0; animation: fallAndRotate linear infinite; }
+        @keyframes fallAndRotate { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.8; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -59,6 +62,7 @@
     </div>
 
     <script>
+        // Tạo hạt lấp lánh (Sparkles)
         function createSparkles() {
             for(let i=0; i<30; i++) {
                 let s = document.createElement('div');
@@ -72,16 +76,24 @@
             }
         }
 
+        // Tạo cánh hoa anh đào thật, trong suốt (Petals)
         function createPetals() {
-            const icons = ['🌸', '✨', '🤍'];
-            for(let i=0; i<20; i++) {
+            // Link hình ảnh cánh hoa hồng pastel xinh xắn
+            const petalImg = 'https://i.imgur.com/gK6BqP5.png'; 
+
+            for(let i=0; i<25; i++) {
                 let p = document.createElement('div');
                 p.className = 'petal';
-                p.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+                p.style.backgroundImage = `url('${petalImg}')`;
                 p.style.left = Math.random() * 100 + 'vw';
-                p.style.fontSize = Math.random() * 15 + 10 + 'px';
-                p.style.animationDuration = Math.random() * 5 + 5 + 's';
+                // Kích thước cánh hoa ngẫu nhiên
+                let size = Math.random() * 15 + 10 + 'px'; 
+                p.style.width = size;
+                p.style.height = size; // Đảm bảo cánh hoa vuông để xoay đẹp
+                // Tốc độ rơi và góc xoay ngẫu nhiên
+                p.style.animationDuration = Math.random() * 5 + 7 + 's'; 
                 p.style.animationDelay = Math.random() * 5 + 's';
+                
                 document.body.appendChild(p);
             }
         }
@@ -91,9 +103,10 @@
             createPetals();
         };
 
+        // Click để bắn hiệu ứng nhỏ
         document.addEventListener('click', (e) => {
             if (e.target.tagName !== 'A') {
-                for(let i=0; i<10; i++) {
+                for(let i=0; i<8; i++) {
                     let p = document.createElement('div');
                     p.style.position = 'fixed';
                     p.style.width = '4px';
@@ -107,7 +120,7 @@
                     document.body.appendChild(p);
 
                     let angle = Math.random() * Math.PI * 2;
-                    let dist = Math.random() * 100;
+                    let dist = Math.random() * 80;
                     
                     p.animate([
                         { transform: 'translate(0, 0) scale(1)', opacity: 1 },
