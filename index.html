@@ -11,7 +11,7 @@
 
         #bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ffffff 0%, #ffe4e1 100%); z-index: -1; }
 
-        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 380px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; z-index: 10; }
+        .card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 175, 189, 0.3); padding: 50px 30px; border-radius: 30px; text-align: center; color: #5d5d5d; width: 85%; max-width: 380px; box-shadow: 0 15px 45px rgba(255,175,189,0.2); animation: fadeIn 2s ease-out; position: relative; z-index: 10; /* Card ở lớp giữa */ }
         
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -25,17 +25,22 @@
 
         .time { font-size: 1.4em; color: #ff8fa3; font-weight: 600; display: block; }
         
-        .map-btn { text-decoration: none; color: #fff; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); position: relative; z-index: 20; }
+        .map-btn { text-decoration: none; color: #fff; background: linear-gradient(to right, #ffafbd, #ffc3a0); padding: 12px 35px; border-radius: 50px; display: inline-block; margin-top: 20px; font-weight: 600; font-size: 0.9em; transition: 0.3s; box-shadow: 0 8px 15px rgba(255,175,189,0.3); position: relative; z-index: 20; /* Nút ở lớp trên cùng */ }
 
-        /* Hoa và sao nổi lên lớp cao nhất */
-        .petal, .sparkle { position: fixed; pointer-events: none; z-index: 9999 !important; }
+        /* Hạt lấp lánh & Cánh hoa ở lớp CAO NHẤT, nhưng cho phép click xuyên qua */
+        .sparkle, .petal { 
+            position: fixed; 
+            z-index: 9999; /* Đảm bảo nổi lên trên tất cả */
+            pointer-events: none; /* QUAN TRỌNG: Cho phép click/chạm xuyên qua, không che chữ */
+        }
         
+        @keyframes sparkleAnim { 0% { transform: translateY(0) scale(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
+
         @keyframes fallAndSway {
             0% { transform: translate(0, -10vh) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
-            100% { transform: translate(100px, 110vh) rotate(360deg); opacity: 0; }
+            100% { transform: translate(80px, 110vh) rotate(360deg); opacity: 0; }
         }
-        @keyframes sparkleAnim { 0% { transform: scale(0); opacity: 0; } 50% { opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
     </style>
 </head>
 <body>
@@ -52,60 +57,23 @@
             
             <div class="highlight-box">
                 <span class="time">16g • 06.04.2026</span>
-                <strong>Tại Sterik Café</strong>
+                <span>Tại Sterik Café</span>
                 <br><small>11/9 Thoại Ngọc Hầu, Phú Trung, Tân Phú</small>
             </div>
 
             <p>Rất mong sự hiện diện của <b>Babyyy</b> để ngày vui của mình thêm ý nghĩa. <br> iu iu iu iu <33333 ✨</p>
         </div>
 
-        <a href="https://www.google.com/maps/search/?api=1&query=Sterik+Café+11/9+Thoại+Ngọc+Hầu" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
+        <a href="https://maps.app.goo.gl/9Tz8Y7kY1R4zG8U99" target="_blank" class="map-btn">📍 XEM ĐỊA ĐIỂM</a>
     </div>
 
     <script>
-        function createElements() {
-            const flowers = ['🌸', '✨', '🤍', '🌸'];
-            for(let i=0; i<35; i++) {
-                let p = document.createElement('div');
-                p.className = Math.random() > 0.5 ? 'petal' : 'sparkle';
-                p.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-                p.style.left = Math.random() * 100 + 'vw';
-                p.style.top = (Math.random() * -20) + 'vh';
-                p.style.fontSize = (Math.random() * 15 + 15) + 'px';
-                
-                if(p.className === 'petal') {
-                    p.style.animation = `fallAndSway ${Math.random() * 5 + 5}s linear infinite`;
-                } else {
-                    p.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s ease-in-out infinite`;
-                    p.style.top = Math.random() * 100 + 'vh';
-                }
-                p.style.animationDelay = (Math.random() * 5) + 's';
-                document.body.appendChild(p);
-            }
-        }
-
-        window.onload = createElements;
-
-        document.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'A') {
-                for(let i=0; i<6; i++) {
-                    let heart = document.createElement('div');
-                    heart.innerHTML = '💖';
-                    heart.style.position = 'fixed';
-                    heart.style.left = e.clientX + 'px';
-                    heart.style.top = e.clientY + 'px';
-                    heart.style.zIndex = '10000';
-                    heart.style.pointerEvents = 'none';
-                    document.body.appendChild(heart);
-                    let angle = Math.random() * Math.PI * 2;
-                    let dist = Math.random() * 60 + 40;
-                    heart.animate([
-                        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                        { transform: `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px) scale(0)`, opacity: 0 }
-                    ], { duration: 1000, easing: 'ease-out' }).onfinish = () => heart.remove();
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+        function createSparkles() {
+            for(let i=0; i<20; i++) {
+                let s = document.createElement('div');
+                s.className = 'sparkle';
+                let size = Math.random() * 3 + 1 + 'px';
+                s.style.width = size; s.style.height = size;
+                s.style.background = '#fff';
+                s.style.borderRadius = '50%';
+                s.style.left =
